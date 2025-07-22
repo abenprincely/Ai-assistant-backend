@@ -1,12 +1,11 @@
 # render.yaml
 services:
   - type: web
-    name: django-backend
+    name: backend
     env: python
-    buildCommand: ""
-    startCommand: gunicorn backend.wsgi:application
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn your_project_name.wsgi:application
+    runtime: python-3.11
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: backend.settings
-      - key: SECRET_KEY
-        value: your_secret_key
+        value: your_project_name.settings
